@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/xsl" href="http://matdata.shu.edu.cn/XSLTransform/hanyuexing.xsl"?>
+<root>
+    <input>
+        <Picture>
+            <file>
+                <name>111111-ec1c9e75d7489afbdb024f50f560b4c27620.jpg</name>
+                <url>111111-ec1c9e75d7489afbdb024f50f560b4c27620.jpg</url>
+            </file>
+        </Picture>
+        <Neighborhood_value>1</Neighborhood_value>
+    </input>
+    <output>
+        <Result_picture_1>
+            <file>
+                <name>color.png</name>
+                <url>color.png</url>
+            </file>
+        </Result_picture_1>
+        <Result_picture_2>
+            <file>
+                <name>gray.png</name>
+                <url>gray.png</url>
+            </file>
+        </Result_picture_2>
+    </output>
+</root>

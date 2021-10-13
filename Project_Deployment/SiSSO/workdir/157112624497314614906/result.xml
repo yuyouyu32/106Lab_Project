@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="http://matdata.shu.edu.cn/XSLTransform/SISSO.xsl" ?>
+<root>
+  <input>
+    <nsample>54</nsample>
+    <desc_dim>3</desc_dim>
+    <nsf>4</nsf>
+    <rung>2</rung>
+    <maxcomplexity>3</maxcomplexity>
+    <dimclass>(1:1)(2:4)</dimclass>
+    <subs_sis>5</subs_sis>
+    <train_data>
+        <file>
+            <name>SISSO-train-5a4ee139ccf804525cbcd38c021368d81868.dat</name>
+            <url>SISSO-train-5a4ee139ccf804525cbcd38c021368d81868.dat</url>
+        </file>
+    </train_data>
+    <cluster>zq4000</cluster>
+  </input>
+  <output>
+    <formula0>1D: y = (-0.3220363910E-04)*[(sqrt(Tem)/(mono)^2)]+(0.1327559274E+01)</formula0>
+    <score0>1D:	R2=0.111402157759551	RMSE=0.2195347649E+00	MaxAE=0.4349070658E+00</score0>
+    <formula1>2D: y = (-0.4320775257E-04)*[(sqrt(Tem)/(mono)^2)]+(-0.6836689676E+02)*[(log(mono)*cbrt(mono))]+(-0.7396729192E+02)</formula1>
+    <score1>2D:	R2=0.279251750022484	RMSE=0.1977163002E+00	MaxAE=0.4340711111E+00</score1>
+    <formula2>3D: y = (0.2981475187E+03)*[((cub+mono)*(mono/tet))]+(0.2433708902E+05)*[((cub)^3/(cub-tet))]+(0.9441628108E+05)*[((cub)^3*sqrt(cub))]+(0.7678278227E+00)</formula2>
+    <score2>3D:	R2=0.526303827744132	RMSE=0.1602878538E+00	MaxAE=0.3662781835E+00</score2>
+    <picture>
+      <file>
+        <name>esc_001d_p001.png</name>
+        <url>esc_001d_p001.png</url>
+      </file>
+      <file>
+        <name>esc_002d_p001.png</name>
+        <url>esc_002d_p001.png</url>
+      </file>
+      <file>
+        <name>esc_003d_p001.png</name>
+        <url>esc_003d_p001.png</url>
+      </file>
+    </picture>
+    <result>
+      <file>
+        <name>result.tar.gz</name>
+        <url>result.tar.gz</url>
+      </file>
+    </result>
+  </output>
+</root>

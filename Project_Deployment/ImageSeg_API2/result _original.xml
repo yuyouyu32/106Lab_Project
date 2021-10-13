@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/xsl" href="http://matdata.shu.edu.cn/XSLTransform/hanyuexing.xsl"?>
+<root>
+    <input>
+        <Picture>
+            <file>
+                <name>{Picture}</name>
+                <url>{Picture}</url>
+            </file>
+        </Picture>
+        <dim>{dim}</dim>
+	<hs>{hs}</hs>
+	<hr>{hr}</hr>
+	<EdgeMode>{EdgeMode}</EdgeMode>
+	<EdgeCount>{EdgeCount}</EdgeCount>
+	<KmeansK>{KmeansK}</KmeansK>
+    </input>
+    <output>
+        <Result_text>{Result_text}</Result_text>
+	<Result_picture_1>
+            <file>
+                <name>result_clustering.png</name>
+                <url>result_clustering.png</url>
+            </file>
+        </Result_picture_1>
+    </output>
+</root>

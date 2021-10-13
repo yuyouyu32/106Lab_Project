@@ -1,0 +1,8 @@
+nsample:54
+desc_dim:3
+nsf:4
+rung:2
+maxcomplexity:3
+dimclass:(1:1)(2:4)
+subs_sis=50000
+train_data:train.dat

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/xsl" href="http://matdata.shu.edu.cn/XSLTransform/hanyuexing.xsl"?>
+<root>
+    <input>
+        <Picture>
+            <file>
+                <name>MetallSegment-503cb4150d62c66eebfa83296b9080f46661.png</name>
+                <url>503cb4150d62c66eebfa83296b9080f4</url>
+            </file>
+        </Picture>
+        <dim>3</dim>
+	<hs>10</hs>
+	<hr>10</hr>
+	<EdgeMode>0</EdgeMode>
+	<EdgeCount>0</EdgeCount>
+	<KmeansK>2</KmeansK>
+    </input>
+    <output>
+        <Result_text>There are 2 types of metallographic in this image: 55 in the first category; 52 in the second category;</Result_text>
+	<Result_picture_1>
+            <file>
+                <name>result_clustering.png</name>
+                <url>5edab80b3bdb848a9083b49f94a09315</url>
+            </file>
+        </Result_picture_1>
+    </output>
+</root>
