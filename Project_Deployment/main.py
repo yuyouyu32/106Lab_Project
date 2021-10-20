@@ -14,11 +14,12 @@ from flask_cors import CORS
 from util import XMLNode, XMLUtil, RedisPool, MD5Util, CMDUtil
 
 PLATFORM = 'windows'
-MODNAME = 'SISSO'
-WORKDIR = 'D:\\SISSO\\workdir'
-EXECUTE = 'SISSO.py'
-COMMAND = 'python SISSO.py {task_id}'
+MODNAME = 'Feature_selection'
+WORKDIR = 'D:\\feature_selection\\workdir'
+EXECUTE = 'feature_selection_API.py'
+COMMAND = 'python feature_selection_API.py {task_id}'
 PARALLELISM = 4
+PORT = 8888
 
 app = Flask(__name__)
 CORS(app)
@@ -214,4 +215,4 @@ if __name__ == '__main__':
         signal.signal(signal.SIGCHLD, signal.SIG_IGN)
     daemon_process = multiprocessing.Process(target=daemon, args=(running, pending,))
     daemon_process.start()
-    app.run('0.0.0.0', 5003, threaded=True)
+    app.run('0.0.0.0', PORT, threaded=True)

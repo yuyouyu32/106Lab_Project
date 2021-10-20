@@ -1,7 +1,0 @@
-Picture:MetallSegment-503cb4150d62c66eebfa83296b9080f46661.png
-dim:3
-hs:10
-hr:10
-EdgeMode:0
-EdgeCount:0
-KmeansK:2

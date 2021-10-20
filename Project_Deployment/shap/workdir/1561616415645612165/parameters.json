@@ -1,9 +1,0 @@
-{
-    "inputCSV": "test.csv",
-    "feature_start": "0",
-    "feature_end": "5",
-    "target": "7",
-    "single": "1，2，3",
-    "interactionA": "0, 1, 2",
-    "interactionB": "3, 4"
-}
