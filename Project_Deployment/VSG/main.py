@@ -14,12 +14,12 @@ from flask_cors import CORS
 from util import XMLNode, XMLUtil, RedisPool, MD5Util, CMDUtil
 
 PLATFORM = 'windows'
-MODNAME = 'Feature_selection'
-WORKDIR = 'D:\\feature_selection\\workdir'
-EXECUTE = 'feature_selection_API.py'
-COMMAND = 'python feature_selection_API.py {task_id}'
+MODNAME = 'VSG'
+WORKDIR = 'D:\\VSG\\workdir'
+EXECUTE = 'VSG_API.py'
+COMMAND = 'python VSG_API.py {task_id}'
 PARALLELISM = 4
-PORT = 8888
+PORT = 8889
 
 app = Flask(__name__)
 CORS(app)
@@ -117,7 +117,7 @@ def result():
         # check task status
         if not os.path.exists(os.path.join(WORKDIR, task_id)):
             return '{"code": -1, "msg": "workdir not found"}'
-        if state_helper(task_id) != 'finish':
+        if state_helper(task_id) not in {'finish', 'error'}:
             return '{"code": -1, "msg": "task has not finished"}'
 
         # compress workdir
@@ -198,7 +198,7 @@ def daemon(r_queue, p_queue):
             # search for finished and killed task
             if not r_queue.empty():
                 task_id = r_queue.get()
-                if state_helper(task_id) not in ['finish', 'killed']:
+                if state_helper(task_id) not in ['finish', 'killed', 'error']:
                     r_queue.put(task_id)
             # put pending task to running
             if not p_queue.empty() and r_queue.qsize() < PARALLELISM:

@@ -1,5 +1,6 @@
 # -*-coding=utf-8-*-
 import sys
+from typing_extensions import ParamSpec
 
 import pandas as pd
 import numpy as np
@@ -184,7 +185,7 @@ def _read_parameters():
     except:
         parameters['random_state'] = None
     try:
-        parameters['is_aic'] = False if parameters['is_aic'] == 'bic' else True
+        parameters['is_aic'] = False if int(parameters['is_aic']) == 0 else True
     except:
         parameters['is_aic'] = True
     try:
@@ -215,15 +216,15 @@ def __indent(elem, level=0):
             elem.tail = i
 
 
-def _add_info_xml(vsg_result, result_retain) -> None:
+def _add_info_xml(vsg_result) -> None:
     try:
         import xml.etree.cElementTree as ET
     except ImportError:
         import xml.etree.ElementTree as ET
     import os
     # Back up result.xml
-    # os.system('cp ./result.xml ./result_before.xml')  # Linux
-    os.system('copy .\\result.xml .\\result_before.xml')    # Win
+    os.system('cp ./result.xml ./result_before.xml')  # Linux
+    # os.system('copy .\\result.xml .\\result_before.xml')    # Win
 
     tree = ET.parse("./result.xml")
     root = tree.getroot()
@@ -244,11 +245,8 @@ def _add_info_xml(vsg_result, result_retain) -> None:
     for _, data in vsg_result.iterrows():
         element_temp = ET.Element('values')
         for key, value in zip(data.index, data):
-            temp_key = ET.Element(f"idx_{key}")
-            try:
-                temp_key.text = str(round(value, result_retain))
-            except:
-                temp_key.text = str(value)
+            temp_key = ET.Element(str(key))
+            temp_key.text = str(value)
             element_temp.append(temp_key)
         element_catalog.append(element_temp)
     Demo.append(element_catalog)
@@ -263,89 +261,22 @@ def _add_info_xml(vsg_result, result_retain) -> None:
     with open('result.xml', 'w') as fp:
         fp.write(''.join(lines))
 
-
-def _add_error_xml(error_message, error_detail):
-    try:
-        import xml.etree.cElementTree as ET
-    except ImportError:
-        import xml.etree.ElementTree as ET
-    import os
-    # Back up result.xml
-    # os.system('cp ./result.xml ./result_before.xml')  # Linux
-    os.system('copy .\\result.xml .\\result_before.xml')    # Win
-
-    tree = ET.parse("./result.xml")
-    root = tree.getroot()
-    output = tree.find('output')
-    element_Error = ET.Element('ERROR')
-
-    element_error = ET.Element('error')
-    element_error.text = error_message
-    
-    element_error_detail = ET.Element('detail')
-    element_error_detail.text = error_detail
-
-    element_Error.append(element_error)
-    element_Error.append(element_error_detail)
-
-    for child in list(output):
-        output.remove(child)
-    output.append(element_Error)
-    
-    # Save
-    __indent(root)
-    ET.tostring(root, method='xml')
-
-    tree.write('result.xml', encoding='utf-8', xml_declaration=True)
-    with open('result.xml', 'r') as fp:
-        lines = [line for line in fp]
-        lines.insert(1, '<?xml-stylesheet type="text/xsl" href="/XSLTransform/feature_selection.xsl" ?>\n')
-    with open('result.xml', 'w') as fp:
-        fp.write(''.join(lines))
-
-
-def main():
-    try:
-        parameters = _read_parameters()
-        inputCSV = parameters['inputCSV']
-        expand_number = parameters['expand_number']
-        feature_space_start_idx = parameters['feature_space_start_index']
-        feature_space_end_idx = parameters['feature_space_end_index']
-        target_name = parameters['target_name']
-        result_retain = parameters['result_retain']
-        random_state = parameters['random_state']
-        is_aic = parameters['is_aic']
-        n_components_start = parameters['n_components_start']
-        n_components_step = parameters['n_components_step']
-    except Exception as e:
-        _add_error_xml("Parameters Error", e)
-        with open('log.txt', 'a') as fp:
-            fp.write('error\n')
-        return
-    try:
-        vsg_result = gmm_vsg(inputCSV, expand_number, feature_space_start_idx, 
-        feature_space_end_idx, target_name=target_name, result_retain=result_retain,
-        random_state=random_state, is_aic=is_aic, n_components_start=n_components_step, 
-        n_components_step=n_components_step
-        )
-    except Exception as e:
-        _add_error_xml("VSG Error", e)
-        with open('log.txt', 'a') as fp:
-            fp.write('error\n')
-        return
-
-    try:
-        _add_info_xml(vsg_result, result_retain)
-    except Exception as e:
-        _add_error_xml("XML Error", e)
-        with open('log.txt', 'a') as fp:
-            fp.write('error\n')
-        return
-
-    with open('log.txt', 'a') as fp:
-        fp.write('finish\n')
-
-
 if __name__ == "__main__":
-    main()
-    
+    # demo
+    parameters = _read_parameters()
+    inputCSV = parameters['inputCSV']
+    expand_number = parameters['expand_number']
+    feature_space_start_idx = parameters['feature_space_start_idx']
+    feature_space_end_idx = parameters['feature_space_end_idx']
+    target_name = parameters['target_name']
+    result_retain = parameters['result_retain']
+    random_state = parameters['random_state']
+    is_aic = parameters['is_aic']
+    n_components_start = parameters['n_components_start']
+    n_components_step = parameters['n_components_step']
+    vsg_result = gmm_vsg(inputCSV, expand_number, feature_space_start_idx, 
+    feature_space_end_idx, target_name=target_name, result_retain=result_retain,
+    random_state=random_state, is_aic=is_aic, n_components_start=n_components_step, 
+    n_components_step=n_components_step
+    )
+    _add_info_xml(vsg_result)

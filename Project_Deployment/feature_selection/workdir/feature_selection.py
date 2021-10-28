@@ -70,6 +70,10 @@ def _read_parameters():
         parameters['XGBoost'] = int(parameters['XGBoost'])
     except:
         parameters['XGBoost'] = None
+    try:
+        parameters['MIC'] = int(parameters['MIC'])
+    except:
+        parameters['MIC'] = None
 
     return parameters
 
@@ -87,7 +91,7 @@ def SHAP(inputCSV, feature_start, feature_end, target, single=None, interaction=
 
     explainer = shap.TreeExplainer(model)
 
-    shap_values = explainer.shap_values(data[features])
+    shap_values = explainer.shap_values(data[features], check_additivity=False)
 
     shap.initjs()
 
@@ -97,13 +101,13 @@ def SHAP(inputCSV, feature_start, feature_end, target, single=None, interaction=
     shap.summary_plot(shap_values, data[features], show=False)
     name = 'summary_shap_values.png'
     summary_names.append(name)
-    plt.savefig('./'+name)
+    plt.savefig('./'+name, bbox_inches='tight')
     plt.close()
 
     shap.summary_plot(shap_values, data[features], plot_type="bar", show=False)
     name = 'summary_importance_values.png'
     summary_names.append(name)
-    plt.savefig('./'+name)
+    plt.savefig('./'+name, bbox_inches='tight')
     plt.close()
 
     picture_names['summary_values'] = summary_names
@@ -115,7 +119,7 @@ def SHAP(inputCSV, feature_start, feature_end, target, single=None, interaction=
             shap.dependence_plot(features[i], shap_values, data[features], interaction_index=None, show=False)
             name = 'shap_values_'+features[i]+'.png'
             single_names.append(name)
-            plt.savefig('./'+name)
+            plt.savefig('./'+name, bbox_inches='tight')
             plt.close()
         picture_names['single_feature'] = single_names
 
@@ -127,29 +131,32 @@ def SHAP(inputCSV, feature_start, feature_end, target, single=None, interaction=
             shap.dependence_plot(features[interaction_A], shap_values, data[features], interaction_index=features[interaction_B], show=False)
             name = 'interaction_values_'+features[interaction_A]+'_inter_'+features[interaction_B]+'.png'
             interaction_names.append(name)
-            plt.savefig('./'+name)
+            plt.savefig('./'+name, bbox_inches='tight')
             plt.close()
         picture_names['interaction_feature'] = interaction_names
 
     return picture_names
 
 
-def feature_selection_regression(X,y,feature_name, num_feats = 10, Pearson=None, Variance=None, Lasso=None, ElasticNet=None, SVR=None,\
+def feature_selection_regression(X,y,feature_name, num_feats = 10, Pearson=None, Variance=None, MIC=None, Lasso=None, ElasticNet=None, SVR=None,\
                                 SVR_RFE=None, RF=None, LightGBM=None, XGBoost=None): 
     weight = {'Pearson': 2,
         'Variance': 1,
+        'MIC': 2,
         'Lasso': 2,
         'ElasticNet':2,
         'SVR':3,
         'SVR_RFE':6,
         'RF':7,
-        'XGBoost':6,
+        'LightGBM':6,
         'XGBoost':8
         }
     if(Pearson):
         weight['Pearson']=Pearson
     if(Variance):
         weight['Variance']=Variance
+    if(MIC):
+        weight['MIC']=MIC
     if(Lasso):
         weight['Lasso']=Lasso
     if(ElasticNet):
@@ -184,7 +191,7 @@ def feature_selection_regression(X,y,feature_name, num_feats = 10, Pearson=None,
 
     # print (weight)
 
-    cols = ['Pearson','Variance','Lasso','ElasticNet','SVR','SVR_RFE','RF', 'LightGBM', 'XGBoost']
+    cols = ['Pearson','Variance','MIC', 'Lasso','ElasticNet','SVR','SVR_RFE','RF', 'LightGBM', 'XGBoost']
 
     def df_process(data):
         for col in cols:
@@ -230,21 +237,22 @@ def feature_selection_regression(X,y,feature_name, num_feats = 10, Pearson=None,
     variance_feature = X.loc[:,variance_support].columns.tolist()
     #print(str(len(variance_feature)), 'Variance:selected features')
 
-    ## Maximal Information Coefficient(MIC)
-    # from minepy import MINE
-    # def mic_selector(X, y, num_feats):
-    #     mic_score = []
-    #     m = MINE()
-    #     for column in X.columns:
-    #         m.compute_score(X[column], y)
-    #         mic_score.append(m.mic())
-    #
-    #     # feature name
-    #     mic_feature = X.iloc[:,np.argsort(np.abs(mic_score))[-num_feats:]].columns.tolist()
-    #     mic_support = [True if i in mic_feature else False for i in feature_name]
-    #     return mic_support, mic_feature
-    #
-    # mic_support, mic_feature = mic_selector(X, y,10)
+    # Maximal Information Coefficient(MIC)
+    try:
+        from minepy import MINE
+        def mic_selector(X, y, num_feats):
+            mic_score = []
+            m = MINE()
+            for column in X.columns:
+                m.compute_score(X[column], y)
+                mic_score.append(m.mic())
+            # feature name
+            mic_feature = X.iloc[:,np.argsort(np.abs(mic_score))[-num_feats:]].columns.tolist()
+            mic_support = [True if i in mic_feature else False for i in feature_name]
+            return mic_support, mic_feature
+        mic_support, mic_feature = mic_selector(X, y,10)
+    except :
+        mic_support = [False] * len(feature_name)
     # print(str(len(mic_feature)), 'mic:selected features')
 
 
@@ -349,7 +357,7 @@ def feature_selection_regression(X,y,feature_name, num_feats = 10, Pearson=None,
     # feature_selection_df = pd.DataFrame({'Feature':feature_name, 'Pearson':cor_support, 'Chi-2':chi_support, 'RFE':rfe_support, 'Logistics':embeded_lr_support,
     #                                     'Random Forest':embeded_rf_support, 'LightGBM':embeded_lgb_support})
 
-    dict = {'Feature':feature_name, 'Pearson':cor_support,'Variance':variance_support,'Lasso':embeded_lr_support, 'ElasticNet':embeded_elas_support,
+    dict = {'Feature':feature_name, 'Pearson':cor_support,'Variance':variance_support,'MIC':mic_support,'Lasso':embeded_lr_support, 'ElasticNet':embeded_elas_support,
             'SVR':embeded_svr_support, 'SVR_RFE':embeded_svr_rfe_support,'RF':embeded_rf_support,
             'LightGBM':embeded_lgb_support, 'XGBoost':embeded_xgb_support}
 
@@ -424,7 +432,10 @@ def _add_info_xml(picture_names, feature_selection_result) -> None:
         feature = ET.Element('feature')
         for key, value in zip(data.index, data):
             method = ET.Element(key)
-            method.text = str(value)
+            try:
+                method.text = str(round(value, 2))
+            except:
+                method.text = str(value)
             feature.append(method)
         element_catalog.append(feature)
     feature_selection.append(element_catalog)
@@ -439,36 +450,105 @@ def _add_info_xml(picture_names, feature_selection_result) -> None:
     with open('result.xml', 'w') as fp:
         fp.write(''.join(lines))
 
+
+def _add_error_xml(error_message, error_detail):
+    try:
+        import xml.etree.cElementTree as ET
+    except ImportError:
+        import xml.etree.ElementTree as ET
+    import os
+    # Back up result.xml
+    # os.system('cp ./result.xml ./result_before.xml')  # Linux
+    os.system('copy .\\result.xml .\\result_before.xml')    # Win
+
+    tree = ET.parse("./result.xml")
+    root = tree.getroot()
+    output = tree.find('output')
+    element_Error = ET.Element('ERROR')
+
+    element_error = ET.Element('error')
+    element_error.text = error_message
+    
+    element_error_detail = ET.Element('detail')
+    element_error_detail.text = error_detail
+
+    element_Error.append(element_error)
+    element_Error.append(element_error_detail)
+
+    for child in list(output):
+        output.remove(child)
+    output.append(element_Error)
+    
+    # Save
+    __indent(root)
+    ET.tostring(root, method='xml')
+
+    tree.write('result.xml', encoding='utf-8', xml_declaration=True)
+    with open('result.xml', 'r') as fp:
+        lines = [line for line in fp]
+        lines.insert(1, '<?xml-stylesheet type="text/xsl" href="/XSLTransform/feature_selection.xsl" ?>\n')
+    with open('result.xml', 'w') as fp:
+        fp.write(''.join(lines))
+
+
 def main():
-    parameters = _read_parameters()
-    inputCSV = parameters['inputCSV']
-    feature_start = parameters['feature_start']
-    feature_end = parameters['feature_end']
-    target = parameters['target']
-    # SHAP
-    single = parameters['single']
-    interaction = parameters['interaction']
-    # feature selection
-    Pearson = parameters['Pearson']
-    Variance = parameters['Variance']
-    Lasso = parameters['Lasso']
-    ElasticNet = parameters['ElasticNet']
-    SVR = parameters['SVR']
-    SVR_RFE = parameters['SVR_RFE']
-    RF = parameters['RF']
-    LightGBM = parameters['LightGBM']
-    XGBoost = parameters['XGBoost']
+    try:
+        parameters = _read_parameters()
+        inputCSV = parameters['inputCSV']
+        feature_start = parameters['feature_start']
+        feature_end = parameters['feature_end']
+        target = parameters['target']
+        # SHAP
+        single = parameters['single']
+        interaction = parameters['interaction']
+        # feature selection
+        Pearson = parameters['Pearson']
+        Variance = parameters['Variance']
+        Lasso = parameters['Lasso']
+        ElasticNet = parameters['ElasticNet']
+        SVR = parameters['SVR']
+        SVR_RFE = parameters['SVR_RFE']
+        RF = parameters['RF']
+        LightGBM = parameters['LightGBM']
+        XGBoost = parameters['XGBoost']
+        MIC = parameters['MIC']
+    except Exception as e:
+        _add_error_xml("Parameters Error", e)
+        with open('log.txt', 'a') as fp:
+            fp.write('error\n')
+        return
+        
+    try:
+        picture_names = SHAP(inputCSV, feature_start, feature_end, target, single, interaction)
+    except Exception as e:
+        _add_error_xml("Shap Error", e)
+        with open('log.txt', 'a') as fp:
+            fp.write('error\n')
+        return
 
-    picture_names = SHAP(inputCSV, feature_start, feature_end, target, single, interaction)
+    try:
+        raw_data = pd.read_csv(inputCSV)
+        y = raw_data[target]
+        X = raw_data.iloc[:, feature_start-1: feature_end]
+        feature_name = list(X.columns)
+        feature_selection_result = feature_selection_regression(X,y,feature_name,10, Pearson, Variance, MIC, Lasso, ElasticNet, SVR,\
+                                    SVR_RFE, RF, LightGBM, XGBoost)
+    except Exception as e:
+        _add_error_xml("Features Vote Error", e)
+        with open('log.txt', 'a') as fp:
+            fp.write('error\n')
+        return
 
-    raw_data = pd.read_csv(inputCSV)
-    y = raw_data[target]
-    X = raw_data.iloc[:, feature_start-1: feature_end]
-    feature_name = list(X.columns)
-    feature_selection_result = feature_selection_regression(X,y,feature_name,10, Pearson, Variance, Lasso, ElasticNet, SVR,\
-                                SVR_RFE, RF, LightGBM, XGBoost)
+    try:
+        _add_info_xml(picture_names, feature_selection_result)
+    except Exception as e:
+        _add_error_xml("XML Error", e)
+        with open('log.txt', 'a') as fp:
+            fp.write('error\n')
+        return
 
-    _add_info_xml(picture_names, feature_selection_result)
-
+    with open('log.txt', 'a') as fp:
+        fp.write('finish\n')
+    
 if __name__ == '__main__':
     main()

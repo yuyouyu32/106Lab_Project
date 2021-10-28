@@ -117,7 +117,7 @@ def result():
         # check task status
         if not os.path.exists(os.path.join(WORKDIR, task_id)):
             return '{"code": -1, "msg": "workdir not found"}'
-        if state_helper(task_id) != 'finish':
+        if state_helper(task_id) not in {'finish', 'error'}:
             return '{"code": -1, "msg": "task has not finished"}'
 
         # compress workdir

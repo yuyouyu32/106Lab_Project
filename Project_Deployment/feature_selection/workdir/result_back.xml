@@ -17,12 +17,13 @@
     <Pearson>{Pearson}</Pearson>
     <Variance>{Variance}</Variance>
     <Lasso> {Lasso}</Lasso>
-    <ElasticNet>{ElasticNe}</ElasticNet>
+    <ElasticNet>{ElasticNet}</ElasticNet>
     <SVR>{SVR}</SVR>
-    <SVR-RFE>{SVR-RFE}</SVR-RFE>
+    <SVR_RFE>{SVR_RFE}</SVR_RFE>
     <RF>{RF}</RF>
     <LightGBM>{LightGBM}</LightGBM>
     <XGBoost>{XGBoost}</XGBoost>
+    <MIC>{MIC}</MIC>
   </input>
   <output>
     <feature-selection></feature-selection>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="/XSLTransform/VSG.xsl" ?>
+<root>
+  <input>
+    <inputCSV>
+        <file>
+            <name>{filename}</name>
+            <url>{filename}</url> 
+        </file>
+    </inputCSV>
+    <feature_space_start_index>{feature_space_start_index}</feature_space_start_index>
+    <feature_space_end_index>{feature_space_end_index}</feature_space_end_index>
+    <expand_number>{expand_number}</expand_number>
+    <target_name>{target_name}</target_name>
+    <result_retain>{result_retain}</result_retain>
+    <random_state>{random_state}</random_state>
+    <is_aic>{is_aic}</is_aic>
+    <n_components_start>{n_components_start}</n_components_start>
+    <n_components_step>{n_components_step}</n_components_step>
+  </input>
+  <output>
+    <Demo></Demo>
+    <Picture></Picture>
+    <result>
+      <file>
+        <name>result.tar.gz</name>
+        <url>result.tar.gz</url>
+      </file>
+    </result>
+  </output>
+</root>

@@ -23,6 +23,7 @@
     <RF>{RF}</RF>
     <LightGBM>{LightGBM}</LightGBM>
     <XGBoost>{XGBoost}</XGBoost>
+    <MIC>{MIC}</MIC>
   </input>
   <output>
     <feature-selection></feature-selection>
