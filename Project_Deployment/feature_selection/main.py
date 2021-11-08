@@ -198,7 +198,7 @@ def daemon(r_queue, p_queue):
             # search for finished and killed task
             if not r_queue.empty():
                 task_id = r_queue.get()
-                if state_helper(task_id) not in ['finish', 'killed']:
+                if state_helper(task_id) not in ['finish', 'killed', 'error']:
                     r_queue.put(task_id)
             # put pending task to running
             if not p_queue.empty() and r_queue.qsize() < PARALLELISM:

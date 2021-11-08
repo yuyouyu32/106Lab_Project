@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="/XSLTransform/remote_data_collection.xsl" ?>
+<root>
+  <input>
+    <inputXLSX>
+        <file>
+            <name>{filename}</name>
+            <url>{filename}</url> 
+        </file>
+    </inputXLSX>
+    <element_name>{element_name}</element_name>
+  </input>
+  <output>
+    <result>
+      <file>
+        <name>result.tar.gz</name>
+        <url>result.tar.gz</url>
+      </file>
+    </result>
+  </output>
+</root>

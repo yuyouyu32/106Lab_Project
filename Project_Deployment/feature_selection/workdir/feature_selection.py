@@ -513,7 +513,7 @@ def main():
         XGBoost = parameters['XGBoost']
         MIC = parameters['MIC']
     except Exception as e:
-        _add_error_xml("Parameters Error", e)
+        _add_error_xml("Parameters Error", str(e))
         with open('log.txt', 'a') as fp:
             fp.write('error\n')
         return
@@ -521,7 +521,7 @@ def main():
     try:
         picture_names = SHAP(inputCSV, feature_start, feature_end, target, single, interaction)
     except Exception as e:
-        _add_error_xml("Shap Error", e)
+        _add_error_xml("Shap Error", str(e))
         with open('log.txt', 'a') as fp:
             fp.write('error\n')
         return
@@ -534,7 +534,7 @@ def main():
         feature_selection_result = feature_selection_regression(X,y,feature_name,10, Pearson, Variance, MIC, Lasso, ElasticNet, SVR,\
                                     SVR_RFE, RF, LightGBM, XGBoost)
     except Exception as e:
-        _add_error_xml("Features Vote Error", e)
+        _add_error_xml("Features Vote Error", str(e))
         with open('log.txt', 'a') as fp:
             fp.write('error\n')
         return
@@ -542,7 +542,7 @@ def main():
     try:
         _add_info_xml(picture_names, feature_selection_result)
     except Exception as e:
-        _add_error_xml("XML Error", e)
+        _add_error_xml("XML Error", str(e))
         with open('log.txt', 'a') as fp:
             fp.write('error\n')
         return

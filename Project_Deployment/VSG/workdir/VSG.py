@@ -318,7 +318,7 @@ def main():
         n_components_start = parameters['n_components_start']
         n_components_step = parameters['n_components_step']
     except Exception as e:
-        _add_error_xml("Parameters Error", e)
+        _add_error_xml("Parameters Error", str(e))
         with open('log.txt', 'a') as fp:
             fp.write('error\n')
         return
@@ -329,7 +329,7 @@ def main():
         n_components_step=n_components_step
         )
     except Exception as e:
-        _add_error_xml("VSG Error", e)
+        _add_error_xml("VSG Error", str(e))
         with open('log.txt', 'a') as fp:
             fp.write('error\n')
         return
@@ -337,7 +337,7 @@ def main():
     try:
         _add_info_xml(vsg_result, result_retain)
     except Exception as e:
-        _add_error_xml("XML Error", e)
+        _add_error_xml("XML Error", str(e))
         with open('log.txt', 'a') as fp:
             fp.write('error\n')
         return
