@@ -123,6 +123,7 @@ def draw(raw_data, predict_data, picture_name, yname):
     # plt.show()
     plt.xlabel("index")
     plt.ylabel(yname)
+    plt.title("Prediction value VS Actrual value")
     plt.savefig(picture_name)
     plt.clf()
 
