@@ -1,0 +1,12 @@
+Performing stepwise search to minimize bic
+ ARIMA(2,0,2)(0,0,0)[0]             : BIC=-2086.560, Time=0.06 sec
+ ARIMA(0,0,0)(0,0,0)[0]             : BIC=-2104.981, Time=0.03 sec
+ ARIMA(1,0,0)(0,0,0)[0]             : BIC=-2222.068, Time=0.06 sec
+ ARIMA(0,0,1)(0,0,0)[0]             : BIC=-2220.766, Time=0.07 sec
+ ARIMA(2,0,0)(0,0,0)[0]             : BIC=-2215.544, Time=0.08 sec
+ ARIMA(1,0,1)(0,0,0)[0]             : BIC=-2218.080, Time=0.08 sec
+ ARIMA(2,0,1)(0,0,0)[0]             : BIC=-2091.165, Time=0.05 sec
+ ARIMA(1,0,0)(0,0,0)[0] intercept   : BIC=-2095.754, Time=0.04 sec
+
+Best model:  ARIMA(1,0,0)(0,0,0)[0]          
+Total fit time: 0.477 seconds

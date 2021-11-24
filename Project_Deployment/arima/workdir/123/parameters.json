@@ -1,0 +1,16 @@
+{
+    "feature_start_index": 2,
+    "feature_end_index": 3,
+    "trainCSV": "test.csv",
+    "testCSV": "test2.csv",
+    "information_criterion": "bic",
+    "target_index": "4",
+    "seasonal": "False",
+    "m": "5",
+    "start_p": "2",
+    "d": "None",
+    "start_q": "2",
+    "max_p": "5",
+    "max_d": "2",
+    "max_q": "5"
+}

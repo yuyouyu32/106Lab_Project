@@ -10,8 +10,8 @@ module_name = 'arima'
 path_now = os.getcwd()
 command_cp_1 = f'copy D:\\{module_name}\\workdir\\{module_name}.py '+ path_now  # Windows
 command_cp_2 = f'copy D:\\{module_name}\\workdir\\utils.py '+ path_now  # Windows
-# command_cp_shap = f'cp ../{module_name}.py '+ path_now  # Linux
-# command_cp_shap = f'cp ../utils.py '+ path_now  # Linux
+# command_cp_1 = f'cp ../{module_name}.py '+ path_now  # Linux
+# command_cp_2 = f'cp ../utils.py '+ path_now  # Linux
 os.system(command_cp_1)
 os.system(command_cp_2)
 
