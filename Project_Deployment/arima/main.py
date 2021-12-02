@@ -19,7 +19,7 @@ WORKDIR = 'D:\\arima\\workdir'
 EXECUTE = 'arima_API.py'
 COMMAND = 'python arima_API.py {task_id}'
 PARALLELISM = 4
-PORT = 8890
+PORT = 8893
 
 app = Flask(__name__)
 CORS(app)

@@ -36,7 +36,7 @@ def data_process(path,target,x_start,x_end):
     :param target: 需要预测的目标,str
     :return:
     '''
-    data = pd.read_excel(path)
+    data = pd.read_csv(path)
     data = data[data[target].notna()]
     x = data.iloc[:,x_start-1:x_end]
     y = data[target]
@@ -247,42 +247,42 @@ def model_xgb(X,y,param):
     opt_models[model] = gsearch.best_estimator_,gsearch.best_params_,test_score
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
+def main():
     X,y = data_process(
-        path='data.xlsx',
-        x_start=1,
-        x_end=10,
-        target="抗拉强度（Mpa）"
+        path='test.csv',
+        x_start=2,
+        x_end=3,
+        target="sinx_cosx"
     )
 
-    #TODO: 加上param。作为dict传入
-    model_Ridge(X,y,param={'alpha': np.arange(0.25,6,0.25)})
-    #
-    model_Lasso(X,y,param={'alpha': np.arange(1e-4,1e-3,4e-5)})
+    # model_Ridge(X,y,param={'alpha': np.arange(0.25,6,0.25)})
+    # #
+    # model_Lasso(X,y,param={'alpha': np.arange(1e-4,1e-3,4e-5)})
 
     model_elasticNet(X,y,param={'alpha': np.arange(1e-4,1e-3,1e-4),
                   'l1_ratio': np.arange(0.1,1.0,0.1),
                   'max_iter':[100000]
                                 })
 
-    model_KNeighbors(X,y,param={'n_neighbors':np.arange(1,11,1)})
+    # model_KNeighbors(X,y,param={'n_neighbors':np.arange(1,11,1)})
 
-    model_SVR(X,y,param={'C':np.arange(1,20,1)
-                         })
+    # model_SVR(X,y,param={'C':np.arange(1,20,1)
+    #                      })
 
-    model_GB(X,y,param={'n_estimators':np.arange(150,351,100),
-                  'max_depth':np.arange(1,4,1),
-                  'min_samples_split':np.arange(5,8,1)})
+    # model_GB(X,y,param={'n_estimators':np.arange(150,351,100),
+    #               'max_depth':np.arange(1,4,1),
+    #               'min_samples_split':np.arange(5,8,1)})
 
     model_rf(X,y,param={'n_estimators':np.arange(100,251,50),
                   'max_features':np.arange(8,21,4),
                   'min_samples_split':np.arange(2,7,2)})
 
-    model_xgb(X,y,param={'n_estimators':np.arange(1,10,20),  # 分类树数量
-                         "max_depth": np.arange(3, 4, 2),  # 每颗树的搜索深度
-                         "eta":[0.3]  # 学习率,写死
-                         }
-                          )
+    # model_xgb(X,y,param={'n_estimators':np.arange(1,10,20),  # 分类树数量
+    #                      "max_depth": np.arange(3, 4, 2),  # 每颗树的搜索深度
+    #                      "eta":[0.3]  # 学习率,写死
+    #                      }
+    #                       )
 
     opt_models = pd.DataFrame(opt_models)
     print(opt_models)

@@ -106,7 +106,7 @@ def draw_bic_or_aic(arimas, information_criterion='bic', seasonal=False):
                 y[index] = arima_dict['aic']
 
     plt.barh(x, y)  # 横放条形图函数 barh
-    plt.savefig("aic_or_bic.jpg")
+    plt.savefig(f'{information_criterion}.jpg')
     plt.clf()
 
 
@@ -147,7 +147,7 @@ def main():
             fp.write('error\n')
         return 
     try:
-        _add_info_xml(picture_names=['result.jpg','aic_or_bic.jpg'], result=result)
+        _add_info_xml(picture_names=['result.jpg',f"{parameters['information_criterion']}.jpg"], result=result)
     except Exception as e:
         _add_error_xml("XML Error", str(e))
         with open('log.txt', 'a') as fp:

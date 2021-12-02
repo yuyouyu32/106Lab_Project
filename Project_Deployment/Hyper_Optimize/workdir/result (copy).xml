@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="/XSLTransform/Hyper_Optimize.xsl" ?>
+	<root>
+<input>
+    <inputCSV>
+        <file>
+            <name>{filename}</name>
+            <url>{filename}</url> 
+        </file>
+    </inputCSV>
+		<feature_start>{feature_start}</feature_start>
+		<feature_end>{feature_end}</feature_end>
+		<target_name>{target_name}</target_name>
+		<Ridge_alpha_start>{Ridge_alpha_start}</Ridge_alpha_start>
+		<Ridge_alpha_end>{Ridge_alpha_end}</Ridge_alpha_end>
+		<Ridge_alpha_step>{Ridge_alpha_step}</Ridge_alpha_step>
+		<Lasso_alpha_start>{Lasso_alpha_start}</Lasso_alpha_start>
+		<Lasso_alpha_end>{Lasso_alpha_end}</Lasso_alpha_end>
+		<Lasso_alpha_step>{Lasso_alpha_step}</Lasso_alpha_step>
+		<elasticNet_alpha_start>{elasticNet_alpha_start}</elasticNet_alpha_start>
+		<elasticNet_alpha_end>{elasticNet_alpha_end}</elasticNet_alpha_end>
+		<elasticNet_alpha_step>{elasticNet_alpha_step}</elasticNet_alpha_step>
+		<elasticNet_l1_ratio_start>{elasticNet_l1_ratio_start}</elasticNet_l1_ratio_start>
+		<elasticNet_l1_ratio_end>{elasticNet_l1_ratio_end}</elasticNet_l1_ratio_end>
+		<elasticNet_l1_ratio_step>{elasticNet_l1_ratio_step}</elasticNet_l1_ratio_step>
+		<elasticNet_max_iter_start>{elasticNet_max_iter_start}</elasticNet_max_iter_start>
+		<elasticNet_max_iter_end>{elasticNet_max_iter_end}</elasticNet_max_iter_end>
+		<elasticNet_max_iter_step>{elasticNet_max_iter_step}</elasticNet_max_iter_step>
+		<Kneighbors_n_neighbors_start>{Kneighbors_n_neighbors_start}</Kneighbors_n_neighbors_start>
+		<Kneighbors_n_neighbors_end>{Kneighbors_n_neighbors_end}</Kneighbors_n_neighbors_end>
+		<Kneighbors_n_neighbors_step>{Kneighbors_n_neighbors_step}</Kneighbors_n_neighbors_step>
+		<SVR_C_start>{SVR_C_start}</SVR_C_start>
+		<SVR_C_end>{SVR_C_end}</SVR_C_end>
+		<SVR_C_step>{SVR_C_step}</SVR_C_step>
+		<GB_n_estimators_start>{GB_n_estimators_start}</GB_n_estimators_start>
+		<GB_n_estimators_end>{GB_n_estimators_end}</GB_n_estimators_end>
+		<GB_n_estimators_step>{GB_n_estimators_step}</GB_n_estimators_step>
+		<GB_max_depth_start>{GB_max_depth_start}</GB_max_depth_start>
+		<GB_max_depth_end>{GB_max_depth_end}</GB_max_depth_end>
+		<GB_max_depth_step>{GB_max_depth_step}</GB_max_depth_step>
+		<GB_min_samples_split_start>{GB_min_samples_split_start}</GB_min_samples_split_start>
+		<GB_min_samples_split_end>{GB_min_samples_split_end}</GB_min_samples_split_end>
+		<GB_min_samples_split_step>{GB_min_samples_split_step}</GB_min_samples_split_step>
+		<RF_n_estimators_start>{RF_n_estimators_start}</RF_n_estimators_start>
+		<RF_n_estimators_end>{RF_n_estimators_end}</RF_n_estimators_end>
+		<RF_n_estimators_step>{RF_n_estimators_step}</RF_n_estimators_step>
+		<RF_max_features_start>{RF_max_features_start}</RF_max_features_start>
+		<RF_max_features_end>{RF_max_features_end}</RF_max_features_end>
+		<RF_max_features_step>{RF_max_features_step}</RF_max_features_step>
+		<RF_min_samples_split_start>{RF_min_samples_split_start}</RF_min_samples_split_start>
+		<RF_min_samples_split_end>{RF_min_samples_split_end}</RF_min_samples_split_end>
+		<RF_min_samples_split_step>{RF_min_samples_split_step}</RF_min_samples_split_step>
+		<xgb_n_estimators_start>{xgb_n_estimators_start}</xgb_n_estimators_start>
+		<xgb_n_estimators_end>{xgb_n_estimators_end}</xgb_n_estimators_end>
+		<xgb_n_estimators_step>{xgb_n_estimators_step}</xgb_n_estimators_step>
+		<xgb_max_depth_start>{xgb_max_depth_start}</xgb_max_depth_start>
+		<xgb_max_depth_end>{xgb_max_depth_end}</xgb_max_depth_end>
+		<xgb_max_depth_step>{xgb_max_depth_step}</xgb_max_depth_step>
+		<xgb_eta_start>{xgb_eta_start}</xgb_eta_start>
+		<xgb_eta_end>{xgb_eta_end}</xgb_eta_end>
+		<xgb_eta_step>{xgb_eta_step}</xgb_eta_step>
+</input>
+<output>
+    <result>
+      <file>
+        <name>result.tar.gz</name>
+        <url>result.tar.gz</url>
+      </file>
+    </result>
+  </output>
+</root>

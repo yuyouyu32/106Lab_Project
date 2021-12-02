@@ -14,7 +14,9 @@ def _read_parameters():
     parameters['features'] = list(range(int(parameters['feature_start_index']) - 1,int(parameters['feature_end_index']), 1))
     parameters['target'] = int(parameters['target_index']) - 1
     parameters['seasonal']= True if parameters['seasonal'] == 'True' else False
-    # information_criterion Read
+    # information_criterion Read (aic, bic)
+    if parameters['information_criterion'] not in ('bic', 'aic'):
+        parameters['bic']
     try:
         parameters['m'] = int(parameters['m'])
     except:
@@ -69,8 +71,8 @@ def _add_info_xml(picture_names, result) -> None:
         import xml.etree.ElementTree as ET
     import os
     # Back up result.xml
-    os.system('cp ./result.xml ./result_before.xml')  # Linux
-    # os.system('copy .\\result.xml .\\result_before.xml')    # Win
+    # os.system('cp ./result.xml ./result_before.xml')  # Linux
+    os.system('copy .\\result.xml .\\result_before.xml')    # Win
 
     tree = ET.parse("./result.xml")
     root = tree.getroot()

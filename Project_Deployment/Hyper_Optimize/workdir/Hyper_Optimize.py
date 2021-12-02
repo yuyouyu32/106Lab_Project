@@ -259,7 +259,7 @@ def _read_parameters():
     # Data
     parameters['feature_start'] = int(parameters['feature_start'])
     parameters['feature_end'] = int(parameters['feature_end'])
-    parameters['target_name'] = int(parameters['target_name'])
+    parameters['target_name'] = parameters['target_name']
 
     # Ridge
     parameters['Ridge_alpha'] = np.arange(float(parameters['Ridge_alpha_start']),
@@ -310,9 +310,9 @@ def _read_parameters():
                                                 int(parameters['RF_n_estimators_end']),
                                                 int(parameters['RF_n_estimators_step']))
     
-    parameters['RF_max_features'] = np.arange(int(parameters['RF_max_features_start']),
-                                                int(parameters['RF_max_features_end']),
-                                                int(parameters['RF_max_features_step']))
+    parameters['RF_max_features'] = np.arange(float(parameters['RF_max_features_start']),
+                                                float(parameters['RF_max_features_end']),
+                                                float(parameters['RF_max_features_step']))
     parameters['RF_min_samples_split'] = np.arange(int(parameters['RF_min_samples_split_start']),
                                                 int(parameters['RF_min_samples_split_end']),
                                                 int(parameters['RF_min_samples_split_step']))
