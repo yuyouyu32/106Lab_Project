@@ -71,8 +71,8 @@ def _add_info_xml(picture_names, result) -> None:
         import xml.etree.ElementTree as ET
     import os
     # Back up result.xml
-    # os.system('cp ./result.xml ./result_before.xml')  # Linux
-    os.system('copy .\\result.xml .\\result_before.xml')    # Win
+    os.system('cp ./result.xml ./result_before.xml')  # Linux
+    # os.system('copy .\\result.xml .\\result_before.xml')    # Win
 
     tree = ET.parse("./result.xml")
     root = tree.getroot()
@@ -128,8 +128,8 @@ def _add_error_xml(error_message, error_detail):
         import xml.etree.ElementTree as ET
     import os
     # Back up result.xml
-    # os.system('cp ./result.xml ./result_before.xml')  # Linux
-    os.system('copy .\\result.xml .\\result_before.xml')    # Win
+    os.system('cp ./result.xml ./result_before.xml')  # Linux
+    # os.system('copy .\\result.xml .\\result_before.xml')    # Win
 
     tree = ET.parse("./result.xml")
     root = tree.getroot()

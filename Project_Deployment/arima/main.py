@@ -13,13 +13,13 @@ from flask_cors import CORS
 
 from util import XMLNode, XMLUtil, RedisPool, MD5Util, CMDUtil
 
-PLATFORM = 'windows'    # or 'linux'
+PLATFORM = 'linux'    # or 'linux'
 MODNAME = 'arima'
-WORKDIR = 'D:\\arima\\workdir'
+WORKDIR = '/home/lab106/WorkSpace/arima'
 EXECUTE = 'arima_API.py'
 COMMAND = 'python arima_API.py {task_id}'
 PARALLELISM = 4
-PORT = 8893
+PORT = 8881
 
 app = Flask(__name__)
 CORS(app)
