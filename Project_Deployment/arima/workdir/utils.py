@@ -12,11 +12,13 @@ def _read_parameters():
         parameters = json.load(fp)
     # 2 CSV Read...
     parameters['features'] = list(range(int(parameters['feature_start_index']) - 1,int(parameters['feature_end_index']), 1))
-    parameters['target'] = int(parameters['target_index']) - 1
+    parameters['target'] = split2int(re_input(parameters['target_index']))
+    for index, item in parameters['target']:
+        parameters['target'][index] = item - 1
     parameters['seasonal']= True if parameters['seasonal'] == 'True' else False
     # information_criterion Read (aic, bic)
     if parameters['information_criterion'] not in ('bic', 'aic'):
-        parameters['bic']
+        parameters['information_criterion'] = 'bic'
     try:
         parameters['m'] = int(parameters['m'])
     except:

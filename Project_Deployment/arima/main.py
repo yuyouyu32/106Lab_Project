@@ -15,7 +15,7 @@ from util import XMLNode, XMLUtil, RedisPool, MD5Util, CMDUtil
 
 PLATFORM = 'linux'    # or 'linux'
 MODNAME = 'arima'
-WORKDIR = '/home/lab106/WorkSpace/arima'
+WORKDIR = '/home/lab106/WorkSpace/arima/workdir'
 EXECUTE = 'arima_API.py'
 COMMAND = 'python arima_API.py {task_id}'
 PARALLELISM = 4
@@ -125,7 +125,7 @@ def result():
             result_xml = fp.read()
         with tarfile.open(os.path.join(WORKDIR, f'{task_id}.tar.gz'), 'w:gz') as tar:
             for filename in os.listdir(os.path.join(WORKDIR, task_id)):
-                if filename in ['result.xml', 'parameters.txt', EXECUTE, 'log.txt']:
+                if filename in ['result.xml', 'parameters.txt', EXECUTE, 'log.txt', '__pycache__']:
                     continue
                 # change filename with its md5 value
                 md5_value = MD5Util.get_md5(os.path.join(WORKDIR, task_id, filename))

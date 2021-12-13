@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="/XSLTransform/arima.xsl" ?>
+<root>
+  <input>
+    <trainCSV>
+        <file>
+            <name>{trainCSV}</name>
+            <url>{trainCSV}</url> 
+        </file>
+    </trainCSV>
+    <testCSV>
+        <file>
+            <name>{testCSV}</name>
+            <url>{testCSV}</url> 
+        </file>
+    </testCSV>
+    <feature_start_index>{feature_start_index}</feature_start_index>
+    <feature_end_index>{feature_end_index}</feature_end_index>
+    <target_index>{target_index}</target_index>
+    <information_criterion>{information_criterion}</information_criterion>
+    <seasonal>{seasonal}</seasonal>
+    <m>{m}</m>
+    <start_p>{m}</start_p>
+    <d>{d}</d>
+    <start_q>{start_q}</start_q>
+    <max_p>{max_p}</max_p>
+    <max_d>{max_d}</max_d>
+    <max_q>{max_q}</max_q>
+  </input>
+  <output>
+    <result>
+      <file>
+        <name>result.tar.gz</name>
+        <url>result.tar.gz</url>
+      </file>
+    </result>
+  </output>
+</root>
