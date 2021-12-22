@@ -50,7 +50,7 @@ def split_train_test(dataset, rate=1):
 def create_dataset(dataset, look_back):
     # 这里的look_back与timestep相同
     dataX, dataY = [], []
-    for i in range(len(dataset) - look_back - 1):
+    for i in range(len(dataset) - look_back):
         a = dataset[i:(i + look_back)]
         dataX.append(a)
         dataY.append(dataset[i + look_back])

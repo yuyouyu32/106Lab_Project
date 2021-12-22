@@ -61,7 +61,7 @@ def arima(path, feature=None, target=[0], model_path="arima.pkl", file_path=None
     arimas = arima_fit(feature_data, target_data,
                        seasonal=seasonal, m=m, information_criterion=information_criterion,
                        start_p=start_p, d=d, start_q=start_q, max_p=max_p, max_d=max_d, max_q=max_q)
-    draw_bic_or_aic(arimas, information_criterion='bic', seasonal=False)
+    draw_bic_or_aic(arimas, information_criterion, seasonal=False)
     if feature_data is None:
         y_predict = arima_predict(
             model_path, file_path=None, n_periods=n_periods)
