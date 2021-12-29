@@ -1,0 +1,39 @@
+Fitting 50 folds for each of 199 candidates, totalling 9950 fits
+Ridge(alpha=12.75)
+------ train_r2 0.5317 ------ test_r2 0.3716 ------
+------ train_er -420186974746503.4375 ------ test_er -411001696044305.6875 ------
+Fitting 50 folds for each of 10 candidates, totalling 500 fits
+Lasso(alpha=1)
+------ train_r2 0.4223 ------ test_r2 0.2958 ------
+------ train_er -711860296271133.3750 ------ test_er -713436663423012.1250 ------
+Fitting 50 folds for each of 800 candidates, totalling 40000 fits
+ElasticNet(alpha=1, l1_ratio=0.4, max_iter=100000)
+------ train_r2 0.3913 ------ test_r2 0.2648 ------
+------ train_er -772691075775409.1250 ------ test_er -780505816213746.2500 ------
+Fitting 50 folds for each of 19 candidates, totalling 950 fits
+KNeighborsRegressor(n_neighbors=2)
+------ train_r2 0.9361 ------ test_r2 0.8170 ------
+------ train_er -2221653181755.4932 ------ test_er -19890065870651.4961 ------
+Fitting 50 folds for each of 99 candidates, totalling 4950 fits
+SVR(C=23)
+------ train_r2 0.9212 ------ test_r2 0.8632 ------
+------ train_er -61725258099546.0781 ------ test_er -111962820973723.0938 ------
+Fitting 50 folds for each of 27 candidates, totalling 1350 fits
+GradientBoostingRegressor(min_samples_split=7, n_estimators=300)
+------ train_r2 0.9950 ------ test_r2 0.8243 ------
+------ train_er -48498402737457.8281 ------ test_er -174558797260859.3125 ------
+RandomForestRegressor(max_features=8, n_estimators=76)
+------ train_r2 0.9659 ------ test_r2 0.7218 ------
+------ train_er -62522689608404.3906 ------ test_er -182873666928821.2188 ------
+Fitting 50 folds for each of 135 candidates, totalling 6750 fits
+XGBRegressor(base_score=0.5, booster='gbtree', colsample_bylevel=1,
+             colsample_bynode=1, colsample_bytree=1, enable_categorical=False,
+             eta=0.3, gamma=0, gpu_id=-1, importance_type=None,
+             interaction_constraints='', learning_rate=0.300000012,
+             max_delta_step=0, max_depth=3, min_child_weight=1, missing=nan,
+             monotone_constraints='()', n_estimators=210, n_jobs=16,
+             num_parallel_tree=1, predictor='auto', random_state=0, reg_alpha=0,
+             reg_lambda=1, scale_pos_weight=1, subsample=1, tree_method='exact',
+             validate_parameters=1, verbosity=None)
+------ train_r2 0.9990 ------ test_r2 0.8042 ------
+------ train_er -12798895978364.8848 ------ test_er -139490576500355.8750 ------

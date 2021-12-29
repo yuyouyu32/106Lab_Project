@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="/XSLTransform/RNN.xsl" ?>
+<root>
+  <input>
+    <inputCSV>
+        <file>
+            <name>{filename}</name>
+            <url>{filename}</url>
+        </file>
+    </inputCSV>
+    
+    <start_index>{start_index}</start_index>
+    <end_index>{end_index}</end_index>
+    <look_back>{look_back}</look_back>
+    <predict_num>{predict_num}</predict_num>
+    <scaler>{scaler}</scaler>
+    <model>{model}</model>
+    <hidden_dim>{hidden_dim}</hidden_dim>
+    <layer_dim>{layer_dim}</layer_dim>
+    <batch_size>{batch_size}</batch_size>
+    <dropout>{dropout}</dropout>
+    <n_epochs>{n_epochs}</n_epochs>
+    <learning_rate>{learning_rate}</learning_rate>
+    <weight_decay>{weight_decay}</weight_decay> 
+  </input>
+  <output>
+    <result>
+      <file>
+        <name>result.tar.gz</name>
+        <url>result.tar.gz</url>
+      </file>
+    </result>
+  </output>
+</root>
