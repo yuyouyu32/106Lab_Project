@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="/XSLTransform/FSRL.xsl" ?>
+<root>
+  <input>
+    <inputCSV>
+        <file>
+            <name>{filename}</name>
+            <url>{filename}</url>
+        </file>
+    </inputCSV>
+    <start_index>{start_index}</start_index>
+    <end_index>{end_index}</end_index>
+    <target_index>{target_index}</target_index>
+    <target_score>{target_score}</target_score>
+    <max_choose>{max_choose}</max_choose>
+    <kind>{kind}</kind>
+    <model>{model}</model>
+    <parameter>{parameter}</parameter>
+    <epochs>{epochs}</epochs>
+  </input>
+  <output>
+    <result>
+      <file>
+        <name>result.tar.gz</name>
+        <url>result.tar.gz</url>
+      </file>
+    </result>
+  </output>
+</root>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="/XSLTransform/NSGA2.xsl" ?>
+<root>
+  <input>
+    <inputCSV>
+        <file>
+            <name>{filename}</name>
+            <url>{filename}</url>
+        </file>
+    </inputCSV>
+    <start_index>{start_index}</start_index>
+    <end_index>{end_index}</end_index>
+    <target_index>{target_index}</target_index>
+    <models>{models}</models>
+    <parameter>{parameter}</parameter>
+    <optimization_direction>{optimization_direction}</optimization_direction>
+    <feature_types>{feature_types}</feature_types>
+    <feature_lower>{feature_lower}</feature_lower>
+    <feature_upper>{feature_upper}</feature_upper>
+    <is_lower>{is_lower}</is_lower>
+    <is_upper>{is_upper}</is_upper>
+    <population_number>{population_number}</population_number>
+    <max_ge>{max_ge}</max_ge>
+    <cross_possibility>{cross_possibility}</cross_possibility>
+    <weight>{weight}</weight>
+    <preference>{preference}</preference>
+  </input>
+  <output>
+    <result>
+      <file>
+        <name>result.tar.gz</name>
+        <url>result.tar.gz</url>
+      </file>
+    </result>
+  </output>
+</root>

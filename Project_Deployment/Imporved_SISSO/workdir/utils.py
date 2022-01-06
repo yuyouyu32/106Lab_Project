@@ -5,7 +5,8 @@ import json
 import os
 from collections import deque
 import re
-
+import matplotlib.pyplot as plt
+import numpy as np
 
 
 def _get_result(pathsrc):
@@ -96,7 +97,50 @@ def __indent(elem, level=0):
             elem.tail = i
 
 
-def _add_info_xml(result) -> None:
+def draw_pics():
+    pattern_s = re.compile(r'[A-Z][a-z]+ \(')
+    pattern_e = re.compile(r'[A-Z][a-z]+ [A-Z]+')
+
+    with open('predic_Y.out','r',encoding='utf8') as f:
+        line=f.readlines()
+    left=0
+    right=0
+    while not pattern_s.search(line[left]):
+        left+=1
+    right=left
+    res={}
+    y_p=[]
+    dim=1
+    while right<len(line):
+        if pattern_s.search(line[right]):
+            right+=1
+        elif pattern_e.search(line[right]):
+            left=right+1
+            right=left
+            res[dim]=y_p
+            y_p=[]
+            dim+=1
+        else:
+            tmp=[]
+            for each in line[right].split()[:2]:
+                tmp.append(float(each))
+            y_p.append(tmp)
+            right+=1
+    pics_names = []
+    for i in range(1,dim):
+        x=np.array(res[i])
+        _x=x[:,0]
+        y=_x
+        _y=x[:,1]
+        plt.figure()
+        plt.plot(_x,y,linewidth=0.5)
+        plt.scatter(_x,_y,s=5,c='r')
+        pic_name = f'{i}D picture.jpg'
+        plt.savefig(pic_name)
+        pics_names.append(pic_name)
+    return pics_names
+                
+def _add_info_xml(result, pics_names) -> None:
     try:
         import xml.etree.cElementTree as ET
     except ImportError:
@@ -132,6 +176,19 @@ def _add_info_xml(result) -> None:
                 element_key.append(element_dim)
         element_result.append(element_key)
     output.append(element_result)
+    
+    # Picture
+    element_pictures = ET.Element('Pictures')
+    for picture_name in pics_names:
+        element_picture = ET.Element('picture')
+        element_file, element_name, element_url = ET.Element('file'), ET.Element('name'), ET.Element('url')
+        element_name.text, element_url.text = picture_name, picture_name
+        element_file.append(element_name)
+        element_file.append(element_url)
+        element_picture.append(element_file)
+        element_pictures.append(element_picture)
+    output.append(element_pictures)
+
     # Save
     __indent(root)
     ET.tostring(root, method='xml')
