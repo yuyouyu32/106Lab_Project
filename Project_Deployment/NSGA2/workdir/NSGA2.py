@@ -190,8 +190,8 @@ def nsga2(model_list, tatget_number, optimization_direction, dimension, feature_
     # 将Result中的两个文件取出
     alllist = os.listdir()
     if 'Result' in alllist:
-        shutil.copyfile('Result\\ObjV.csv', 'ObjV.csv')
-        shutil.copyfile('Result\\Phen.csv', 'Phen.csv')
+        shutil.copyfile('./Result/ObjV.csv', 'ObjV.csv')
+        shutil.copyfile('./Result/Phen.csv', 'Phen.csv')
     return NDSet.Phen, NDSet.ObjV
 
 def save(ObjV):

@@ -17,7 +17,6 @@ def _read_parameters():
     with open('parameters.json','r',encoding='utf8')as fp:
         parameters = json.load(fp)
     # inputCSV
-    parameters['target_number'] = int(parameters['target_number'])
     parameters['models'] = list(re_input(parameters['models']).split(','))
             
     parameters['parameter'] = split2int(re_input(parameters['parameter']))

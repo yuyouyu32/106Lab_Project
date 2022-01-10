@@ -530,7 +530,7 @@ def run_select(name_list, env, RL,index, item = 2000):
 
     # 显示标签，如果不加这句，即使在plot中加了label='一些数字'的参数，最终还是不会显示标签
     plt.legend(loc="upper right")
-    plt.xlabel('迭代次数')
+    plt.xlabel('epochs')
     plt.ylabel(index)
 
     plt.savefig('result.png')

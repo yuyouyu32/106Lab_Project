@@ -250,7 +250,7 @@ def feature_selection_regression(X,y,feature_name, num_feats = 10, Pearson=None,
             mic_feature = X.iloc[:,np.argsort(np.abs(mic_score))[-num_feats:]].columns.tolist()
             mic_support = [True if i in mic_feature else False for i in feature_name]
             return mic_support, mic_feature
-        mic_support, mic_feature = mic_selector(X, y,10)
+        mic_support, mic_feature = mic_selector(X, y,num_feats)
     except :
         mic_support = [False] * len(feature_name)
     # print(str(len(mic_feature)), 'mic:selected features')
