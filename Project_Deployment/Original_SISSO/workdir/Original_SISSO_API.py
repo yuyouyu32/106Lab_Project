@@ -7,7 +7,7 @@ import tarfile
 
 # Get task id
 TID = sys.argv[1]
-module_name = 'Improved_SISSO'
+module_name = 'Original_SISSO'
 system_plat = platform.system()
 
 # copy shap_func.py
@@ -34,7 +34,7 @@ except Exception as e:
         fp.write('error\n')
     
 # SISSO excute
-command = '/home/lab106/WorkSpace/SISSO/SISSO'
+command = '/home/lab106/WorkSpace/SISSO/SISSO2'
 command_predict = '/home/lab106/WorkSpace/SISSO/SISSO_predict'
 finish = False
 if Flag:

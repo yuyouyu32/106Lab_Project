@@ -1,0 +1,9 @@
+{
+    "pictureCSV": "hwt_pictures.csv",
+    "originalCSV": "NIMS_Fatigue.csv",
+    "start_index": "1",
+    "end_index": "16",
+    "target_name": "Fatigue",
+    "learning_rate": "0.00005",
+    "epochs": "85000"
+}

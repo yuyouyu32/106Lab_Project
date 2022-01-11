@@ -1,9 +1,0 @@
-nsample:54
-desc_dim:3
-nsf:4
-rung:2
-maxcomplexity:3
-dimclass:(1:1)(2:4)
-subs_sis:5
-train_data:SISSO-train-5a4ee139ccf804525cbcd38c021368d81868.dat
-cluster:zq4000

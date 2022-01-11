@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="http://matdata.shu.edu.cn/XSLTransform/ISISSO.xsl" ?>
+<root>
+    <input>
+        <nsample>{nsample}</nsample>
+        <desc_dim>{desc_dim}</desc_dim>
+        <nsf>{nsf}</nsf>
+        <rung>{rung}</rung>
+        <maxcomplexity>{maxcomplexity}</maxcomplexity>
+        <dimclass>{dimclass}</dimclass>
+        <subs_sis>{subs_sis}</subs_sis>
+        <train_data>
+            <file>
+                <name>{train_data}</name>
+                <url>{train_data}</url>
+            </file>
+        </train_data>
+    </input>
+    <output>
+        <result>
+            <file>
+                <name>result.tar.gz</name>
+                <url>result.tar.gz</url>
+            </file>
+        </result>
+    </output>
+</root>
