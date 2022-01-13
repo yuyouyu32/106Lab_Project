@@ -46,12 +46,12 @@ def _get_result(pathsrc):
         tmp=[]
         for j in range(i+1):
             tmp.append(feature.popleft())
-        dic_f["Formula "+str(i+1)+"D"]=tmp
-        dic_c["Formula "+str(i+1)+"D"]=coeffic.popleft()
-        dic_b["Formula "+str(i+1)+"D"]=bias.popleft()
+        dic_f["Formula_"+str(i+1)+"D"]=tmp
+        dic_c["Formula_"+str(i+1)+"D"]=coeffic.popleft()
+        dic_b["Formula_"+str(i+1)+"D"]=bias.popleft()
         tmpr=rmse.popleft()
-        dic_rmse[str(i+1)+"D"]=tmpr[0]
-        dic_mae[str(i+1)+"D"]=tmpr[1]
+        dic_rmse["Formula" + str(i+1)+"D"]=tmpr[0]
+        dic_mae["Formula" + str(i+1)+"D"]=tmpr[1]
     res={}
     res['features']=dic_f
     res['coefficients']=dic_c

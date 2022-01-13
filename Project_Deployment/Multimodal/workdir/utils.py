@@ -1,7 +1,7 @@
 import os
 
 from numpy import double
-module_name = 'FSRL'
+module_name = 'Multimodal'
 import platform
 system_plat = platform.system()
 

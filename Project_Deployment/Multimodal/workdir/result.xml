@@ -10,8 +10,8 @@
     </pictureCSV>
     <originalCSV>
         <file>
-            <name>{filename}</name>
-            <url>{filename}</url>
+            <name>{filename2}</name>
+            <url>{filename2}</url>
         </file>
     </originalCSV>
     <start_index>{start_index}</start_index>

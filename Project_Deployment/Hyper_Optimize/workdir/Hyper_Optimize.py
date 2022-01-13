@@ -433,7 +433,7 @@ def _add_error_xml(error_message, error_detail):
     tree.write('result.xml', encoding='utf-8', xml_declaration=True)
     with open('result.xml', 'r') as fp:
         lines = [line for line in fp]
-        lines.insert(1, '<?xml-stylesheet type="text/xsl" href="/XSLTransform/LSTM.xsl" ?>\n')
+        lines.insert(1, '<?xml-stylesheet type="text/xsl" href="/XSLTransform/Hyper_Optimize.xsl" ?>\n')
     with open('result.xml', 'w') as fp:
         fp.write(''.join(lines))
 
