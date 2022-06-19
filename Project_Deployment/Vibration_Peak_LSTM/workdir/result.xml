@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <input>
+    <inputCSV>
+        <file>
+            <name>{filename}</name>
+            <url>{filename}</url>
+        </file>
+    </inputCSV>
+    <n_layers>{n_layers}</n_layers>
+    <hidden_dim>{hidden_dim}</hidden_dim>
+    <seq_length>{seq_length}</seq_length>
+    <epoch>{epoch}</epoch>
+    <lr>{lr}</lr>
+  </input>
+  <output>
+    <curve>
+      <picture>
+        <url>md5</url>
+      </picture>
+    </curve>
+    <model>
+      <file>
+        <name>model</name>
+        <url>model</url>
+      </file>
+    </model>
+    <result>
+      <file>
+        <name>result.tar.gz</name>
+        <url>result.tar.gz</url>
+      </file>
+    </result>
+  </output>
+</root>

@@ -23,13 +23,14 @@ def _read_parameters():
     parameters['feature_end'] = int(parameters['feature_end'])
     # SHAP
     try:
-        parameters['single'] = split2int(re_input(parameters['single']))
+        temp = split2int(re_input(parameters['single']))
+        parameters['single'] = temp - 1
     except:
         parameters['single'] = None
     try:
         parameters['interactionA'] = split2int(re_input(parameters['interactionA']))
         parameters['interactionB'] = split2int(re_input(parameters['interactionB']))
-        parameters['interaction'] = [[A,B] for A,B in zip(parameters['interactionA'], parameters['interactionB'])]
+        parameters['interaction'] = [[A - 1, B - 1] for A,B in zip(parameters['interactionA'], parameters['interactionB'])]
     except:
         parameters['interaction'] = None
 
