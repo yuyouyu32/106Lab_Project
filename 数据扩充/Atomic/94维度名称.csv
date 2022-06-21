@@ -1,0 +1,95 @@
+简写,英文全称,中文全称
+AN1,Weighted mean of Atomic Number,原子序数加权平均数
+AN2,Weighted harmonic mean of Atomic Number,原子序数加权调和平均数
+AND,Standard deviation of Atomic Number,原子序数标准差
+ANd,Mismatch of Atomic Number,原子序数错配度
+Rc1,Weighted mean of Covalent Radius ,共价半径加权平均数
+Rc2,Weighted harmonic mean of Covalent Radius ,共价半径加权调和平均数
+RcD,Standard deviation of Covalent Radius ,共价半径标准差
+Rcd,Mismatch of Covalent Radius ,共价半径错配度
+Vmc,Atomic Volumn based on Covalent Radius ,基于共价半径的原子平均体积
+Rm1,Weighted mean of Metallic Radius ,金属半径加权平均数
+Rm2,Weighted harmonic mean of Metallic Radius ,金属半径加权调和平均数
+RmD,Standard deviation of Metallic Radius ,金属半径标准差
+Rmd,Mismatch of Metallic Radius ,金属半径错配度
+Vmm,Atomic Volumn based on Metallic Radius ,基于金属半径的原子平均体积
+AW1,Weighted mean of Atomic Weight ,原子质量加权平均数
+AW2,Weighted harmonic mean of Atomic Weight ,原子质量加权调和平均数
+AWD,Standard deviation of Atomic Weight ,原子质量标准差
+AWd,Mismatch of Atomic Weight ,原子质量错配度
+D1,Weighted mean of Density,密度加权平均数
+D2,Weighted harmonic mean of Density,密度加权调和平均数
+DD,Standard deviation of Density,密度标准差
+Dd,Mismatch of Density,密度错配度
+Eea1,Weighted mean of Electron Affinity ,电子亲合能加权平均数
+Eea2,Weighted harmonic mean of Electron Affinity ,电子亲合能加权调和平均数
+EeaD,Standard deviation of Electron Affinity ,电子亲合能标准差
+Eead,Mismatch of Electron Affinity ,电子亲合能错配度
+XM1,Weighted mean of Mulliken Electronegativity ,马利肯电负性加权平均数
+XM2,Weighted harmonic mean of Mulliken Electronegativity ,马利肯电负性加权调和平均数
+XMD,Standard deviation of Mulliken Electronegativity ,马利肯电负性标准差
+XMd,Mismatch of Mulliken Electronegativity ,马利肯电负性错配度
+XP1,Weighted mean of Pauling Electronegativity ,鲍林电负性加权平均数
+XP2,Weighted harmonic mean of Pauling Electronegativity ,鲍林电负性加权调和平均数
+XPD,Standard deviation of Pauling Electronegativity ,鲍林电负性标准差
+XPd,Mismatch of Pauling Electronegativity ,鲍林电负性错配度
+Gp1,Weighted mean of Group,族数加权平均数
+Gp2,Weighted harmonic mean of Group,族数加权调和平均数
+GpD,Standard deviation of Group,族数标准差
+Gpd,Mismatch of Group,族数错配度
+Hf1,Weighted mean of Heat of Fusion ,熔化热加权平均数
+Hf2,Weighted harmonic mean of Heat of Fusion ,熔化热加权调和平均数
+HfD,Standard deviation of Heat of Fusion ,熔化热标准差
+Hfd,Mismatch of Heat of Fusion ,熔化热错配度
+I11,Weighted mean of First Ionization Potential ,第一电离能加权平均数
+I12,Weighted harmonic mean of First Ionization Potential ,第一电离能加权调和平均数
+I1D,Standard deviation of First Ionization Potential ,第一电离能标准差
+I1d,Mismatch of First Ionization Potential ,第一电离能错配度
+I21,Weighted mean of Second Ionization Potential ,第二电离能加权平均数
+I22,Weighted harmonic mean of Second Ionization Potential ,第二电离能加权调和平均数
+I2D,Standard deviation of Second Ionization Potential ,第二电离能标准差
+I2d,Mismatch of Second Ionization Potential ,第二电离能错配度
+LP1,Weighted mean of Lattice Volume ,晶体体积加权平均数
+LP2,Weighted harmonic mean of Lattice Volume ,晶体体积加权调和平均数
+LPD,Standard deviation of Lattice Volume ,晶体体积标准差
+LPd,Mismatch of Lattice Volume ,晶体体积错配度
+Tb1,Weighted mean of Boiling Point ,沸点加权平均数
+Tb2,Weighted harmonic mean of Boiling Point ,沸点加权调和平均数
+TbD,Standard deviation of Boiling Point ,沸点标准差
+Tbd,Mismatch of Boiling Point ,沸点错配度
+Tm1,Weighted mean of Melting Point ,熔点加权平均数
+Tm2,Weighted harmonic mean of Melting Point ,熔点加权调和平均数
+TmD,Standard deviation of Melting Point ,熔点标准差
+Tmd,Mismatch of Melting Point ,熔点错配度
+P1,Weighted mean of Period,周期加权平均数
+P2,Weighted harmonic mean of Period,周期加权调和平均数
+PD,Standard deviation of Period,周期标准差
+Pd,Mismatch of Period,周期错配度
+Cp1,Weighted mean of Heat Capacity ,比热容加权平均数
+Cp2,Weighted harmonic mean of Heat Capacity ,比热容加权调和平均数
+CpD,Standard deviation of Heat Capacity ,比热容标准差
+Cpd,Mismatch of Heat Capacity ,比热容错配度
+K1,Weighted mean of Thermal Conductivity ,热传导率加权平均数
+K2,Weighted harmonic mean of Thermal Conductivity ,热传导率加权调和平均数
+KD,Standard deviation of Thermal Conductivity ,热传导率标准差
+Kd,Mismatch of Thermal Conductivity ,热传导率错配度
+VEC1,Weighted mean of Valence Electrons ,价电子数加权平均数
+VEC2,Weighted harmonic mean of Valence Electrons ,价电子数加权调和平均数
+VECD,Standard deviation of Valence Electrons ,价电子数标准差
+VECd,Mismatch of Valence Electrons ,价电子数错配度
+sVEC1,Weighted mean of Valence Electrons in the s valence orbitals ,s层价电子数加权平均数
+pVEC1,Weighted mean of Valence Electrons in the p valence orbitals ,p层价电子数加权平均数
+dVEC1,Weighted mean of Valence Electrons in the d valence orbitals ,d层价电子数加权平均数
+fs,fraction of Valence Electrons in the s valence orbitals ,s层价电子数百分比
+fp,fraction of Valence Electrons in the p valence orbitals ,p层价电子数百分比
+fd,fraction of Valence Electrons in the d valence orbitals ,d层价电子数百分比
+W1,Weighted mean of Work Function ,功函数加权平均数
+W2,Weighted harmonic mean of Work Function ,功函数加权调和平均数
+WD,Standard deviation of Work Function ,功函数标准差
+Wd,Mismatch of Work Function ,功函数错配度
+Hmix,mixing enthalpy ,混合焓
+Smix/R,normalized mixing entropy ,标准化混合熵
+Smis/kb,normalized mismatch entropy ,标准化错配熵
+PHSmis,Products of mixing enthalpy and normalized mismatch entropy ,混合焓错配熵之积
+PHSmix,Products of mixing enthalpy and normalized mixing entropy ,混合焓混合熵之积
+PHSS,"Products of mixing enthalpy, normalized mismatch entropy and normalized mismatch entropy ",混合焓混合熵错配熵之积
