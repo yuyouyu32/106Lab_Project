@@ -1,8 +1,10 @@
+import imp
 import os
 from typing import List
 
 import numpy as np
 import pandas as pd
+from tqdm import tqdm
 
 
 class DataTransform:
@@ -148,7 +150,7 @@ class DataTransform:
 def transfet_img(img_path: str, save_path: str, save_prename: str) -> None:
     from PIL import Image
     original_pics = pd.read_csv(f'./{img_path}').astype('double').values.reshape(-1, 1, 24, 21).astype(np.uint8)
-    for index, pic in enumerate(original_pics):
+    for index, pic in enumerate(tqdm(original_pics)):
         im = Image.fromarray(np.squeeze(pic.transpose(2,1,0)))
         im.save(f'{save_path}/{save_prename}_{index}.png')
 
