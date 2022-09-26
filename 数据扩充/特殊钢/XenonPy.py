@@ -108,7 +108,7 @@ class DataTransform:
                                         'WeightedVariance', 'MaxPooling', 'MinPooling', 'GeometricMean', 'HarmonicMean'])
         compRes = cal.transform(compObj)
         # Saving
-        compRes.to_csv(f'{self.save_path}/{file_name}', index=False)
+        compRes.to_csv(f'{self.save_path}/{file_name}', index=False, float_format='%.4f')
         return compRes
 
     def generate_img(self, original_img_path: str = None, img_template_path: str = './ImgTemplate.xlsx',  chemical_compositions: List[str] = None, file_name = 'Images.csv') -> pd.DataFrame:
@@ -156,9 +156,9 @@ def transfet_img(img_path: str, save_path: str, save_prename: str) -> None:
 # Test
 if __name__ == '__main__':
     datatransformer = DataTransform(
-        data_path='./特殊钢-全链条计算数据_插值_中位数版_formatted2.csv', save_path='./')
+        data_path='./特殊钢-全链条计算数据_插值_中位数版20w.csv', save_path='./')
     original_data = datatransformer.generate_original_img(
-        chemical_compositions=['C','Mn','Si','P','S','Cr','Mo','V','Ni','W','Ce','La','Ca','Co','Nb','Ti','B','Cu','Sr','Se','Na','Hg','Cd','Ag','As','Bi','Zn','Sb','Sn','Pb','Fe','N','O','H','Mg'], file_name='xeonpy_e_1.csv')
+        chemical_compositions=['C','Mn','Si','P','S','Cr','Mo','V','Ni','W','Ce','La','Ca','Co','Nb','Ti','B','Cu','Sr','Se','Na','Hg','Cd','Ag','As','Bi','Zn','Sb','Sn','Pb','N','O','H','Mg'], file_name='xeonpy_e_1.csv')
     pic_1 = datatransformer.generate_img(img_template_path = './ImgTemplate.xlsx', original_img_path='xeonpy_e_1.csv', file_name='./Images.csv')
     transfet_img(img_path = './Images.csv', save_path = './pics_1', save_prename = 'test')
     pic_2 = datatransformer.generate_img(img_template_path = './PICTURE.xlsx', original_img_path='xeonpy_e_1.csv', file_name='./Images_2.csv')
