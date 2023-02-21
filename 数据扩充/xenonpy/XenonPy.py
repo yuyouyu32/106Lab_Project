@@ -34,24 +34,24 @@ class DataTransform:
         column_names = pd.read_excel(img_template_path).values.flatten()
         heads = ['sum:', 'var:', 'gmean:', 'ave:', 'hmean:', 'max:', 'min:']
         out_columns = [None]*504
-        for raw_index in range(0, 7):
-            for column_index in range(0, 8):
-                column_name = column_names[column_index + raw_index * 8]
-                out_columns[raw_index * 72 + column_index *
+        for raw_index in range(0, 8):
+            for column_index in range(0, 7):
+                column_name = column_names[column_index + raw_index * 7]
+                out_columns[raw_index * 63 + column_index *
                             3] = f'{heads[0]}{column_name}'
-                out_columns[raw_index * 72 + 1 + column_index*3] = 'zeros'
-                out_columns[raw_index * 72 + 2 + column_index *
+                out_columns[raw_index * 63 + 1 + column_index*3] = 'zeros'
+                out_columns[raw_index * 63 + 2 + column_index *
                             3] = f'{heads[1]}{column_name}'
-                out_columns[raw_index * 72 + 24 +
+                out_columns[raw_index * 63 + 21 +
                             column_index*3] = f'{heads[2]}{column_name}'
-                out_columns[raw_index * 72 + 25 +
+                out_columns[raw_index * 63 + 22 +
                             column_index*3] = f'{heads[3]}{column_name}'
-                out_columns[raw_index * 72 + 26 +
+                out_columns[raw_index * 63 + 23 +
                             column_index*3] = f'{heads[4]}{column_name}'
-                out_columns[raw_index * 72 + 48 +
+                out_columns[raw_index * 63 + 42 +
                             column_index*3] = f'{heads[5]}{column_name}'
-                out_columns[raw_index * 72 + 49 + column_index*3] = 'zeros'
-                out_columns[raw_index * 72 + 50 +
+                out_columns[raw_index * 63 + 43 + column_index*3] = 'zeros'
+                out_columns[raw_index * 63 + 44 +
                             column_index*3] = f'{heads[6]}{column_name}'
         return out_columns
 
